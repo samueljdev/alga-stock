@@ -1,17 +1,36 @@
 import React from "react";
 
 class ClassCompoenent extends React.Component<{ name: string }> {
+
+    constructor(props: any){
+        super(props)
+        console.log('construindo ')
+    }
+
     state = {
-        name: 'Mundo!!!!!!'
+        nome: 'Antigo',
+        sobrenome: 'Historico'
+    }
+
+    componentDidMount(): void {
+        console.log('Did Mount read')
+    }
+
+    componentDidUpdate() {
+        console.log('Did Update')
     }
 
     render() {
-        return <div>
-            <p>name: {this.state.name}</p>
+        console.log('render')
+        return ( <div>
+            <p>name: {this.state.nome}</p>
+            <p>sobrenome: {this.state.sobrenome}</p>
             <button onClick={() => {
-                this.setState({ name: 'Daniel' })
-            }}>Click me</button>
+                this.setState({ nome: 'Novo' })
+                this.setState({ sobrenome: 'Lenda' })
+            }}>Click Aqui</button>
         </div>
+        )
     }
 }
 
