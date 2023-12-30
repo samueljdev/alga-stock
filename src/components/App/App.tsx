@@ -2,7 +2,7 @@
 import logo from './logo.svg';
 import './App.css';
 import TestCompoment from '../TestComponent';
-import ClassComponent from '../ClassComponent';
+// import ClassComponent from '../ClassComponent';
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
        
        <TestCompoment name='idade'/>
-       <ClassComponent name='ClassCompoenent' />
+       {/* <ClassComponent name='ClassCompoenent' /> */}
        
         <a
           className="App-link"
