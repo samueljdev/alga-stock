@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
        
-       <TestCompoment />
+       <TestCompoment name='idade'/>
        <ClassComponent name='ClassCompoenent' />
        
         <a

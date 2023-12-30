@@ -14,6 +14,7 @@ class ClassCompoenent extends React.Component<{ name: string }> {
 
     componentDidMount(): void {
         console.log('Did Mount read')
+        console.log('Did Mount read')
     }
 
     componentDidUpdate() {
