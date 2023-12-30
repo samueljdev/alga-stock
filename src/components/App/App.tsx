@@ -12,7 +12,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
        
        <TestCompoment />
-       <ClassComponent />
+       <ClassComponent name="NOVAMENTE" />
        
         <a
           className="App-link"
