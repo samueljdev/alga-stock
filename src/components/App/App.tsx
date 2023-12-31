@@ -1,9 +1,10 @@
 
-import Button from '../Button';
+import Button from '../../shared/Button';
+import Container from '../../shared/Container';
 import Header from '../Header';
 import './App.css';
 
-function TestComponent () {
+function TestComponent() {
   return <img width="16" src="https://img.icons8.com/pastel-glyph/2x/search--v2.png" alt="search icon" />
 }
 
@@ -12,15 +13,15 @@ function App() {
     <div className="App">
       <Header title="AlgaStock" />
 
-      <div className='Container'>
-      <Button
+      <Container>
+        <Button
           onClick={() => window.alert('UIIIU')}
           appendIcon={<TestComponent />}
         >
           Alert
         </Button>
-      </div>
-
+      </Container>
+      
     </div>
   );
 }
