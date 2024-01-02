@@ -22,44 +22,34 @@ declare interface TableProps {
 const Table: React.FC<TableProps> = (props) => {
   const [organizedData, indexedHeaders] = organizeData(props.data, props.headers)
 
-  return <table className="AppTable">
-    <thead>
-      <tr>
+  return (
+    <table className="AppTable">
+      <thead>
+        <tr>
+          {
+            props.headers.map(header => <th className={header.right ? 'right' : ''} key={header.key}> {header.value}</th>)
+          }
+        </tr>
+      </thead>
+      <tbody>
         {
-          props.headers.map(header =>
-            <th
-              className={header.right ? 'right' : ''}
-              key={header.key}
-            >
-              {header.value}
-            </th>
-          )
+          organizedData.map((row, i) => {
+            return (
+              <tr key={i}>
+                {
+                  Object
+                    .keys(row)
+                    .map((item, i) => item !== '$original' ? <td key={row.$original.id + i} className={indexedHeaders[item].right ? 'right' : ''}> {row[item]} </td>
+                      : null
+                    )
+                }
+              </tr>
+            )
+          })
         }
-      </tr>
-    </thead>
-    <tbody>
-      {
-        organizedData.map((row, i) => {
-          return <tr key={i}>
-            {
-              Object
-                .keys(row)
-                .map((item, i) =>
-                  item !== '$original'
-                    ? <td
-                      key={row.$original.id + i}
-                      className={indexedHeaders[item].right ? 'right' : ''}
-                    >
-                      {row[item]}
-                    </td>
-                    : null
-                )
-            }
-          </tr>
-        })
-      }
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  )
 }
 
 export default Table
