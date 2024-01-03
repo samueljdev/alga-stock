@@ -1,12 +1,10 @@
-
-import Button from '../../shared/Button';
-import Container from '../../shared/Container';
-import Form from '../../shared/Form';
-import Input from '../../shared/Input';
-import Table, { TableHeader } from '../../shared/Table';
-import Products from '../../shared/Table/Table.mockdata';
-import Header from '../Header';
+import React, { useState } from 'react';
 import './App.css';
+import Header from '../Header';
+import Container from '../../shared/Container';
+import Table, { TableHeader } from '../../shared/Table';
+import Products, { Product } from '../../shared/Table/Table.mockdata';
+import ProductForm, { ProductCreator } from '../Products/ProductForm';
 
 const headers: TableHeader[] = [
   { key: 'id', value: '#' },
@@ -16,6 +14,23 @@ const headers: TableHeader[] = [
 ]
 
 function App() {
+  const [products, setProducts] = useState(Products)
+
+  const handleProductSubmit = (product: ProductCreator) => {
+    setProducts([
+      ...products,
+      {
+        id: products.length + 1,
+        ...product
+      }
+    ])
+  }
+
+  const handleProductUpdate = (newProduct: Product) => {
+    setProducts(products.map(product =>
+      product.id === newProduct.id ? newProduct : product
+    ))
+  }
 
   return (
     <div className="App">
@@ -23,30 +38,14 @@ function App() {
       <Container>
         <Table
           headers={headers}
-          data={Products}
+          data={products}
         />
-        <Form title="Product form" onSubmit={console.log}>
-          <Input
-            label="Name"
-            placeholder="E.g.: Cookie"
-          />
-          <Input
-            label="Price"
-            type="number"
-            step="0.01"
-            min="0"
-            placeholder="E.g.: 1.25"
-          />
-          <Input
-            label="Stock"
-            type="number"
-            min="0"
-            placeholder="E.g.: 15"
-          />
-          <Button>
-            Submit
-          </Button>
-        </Form>
+
+        <ProductForm
+          form={products[0]}
+          onSubmit={handleProductSubmit}
+          onUpdate={handleProductUpdate}
+        />
       </Container>
     </div>
   );
