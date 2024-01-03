@@ -8,12 +8,11 @@ export interface TableHeader {
   value: string
   right?: boolean
 }
+
 declare interface TableProps {
   headers: TableHeader[]
   data: any[]
-
   enableActions?: boolean
-
   onDelete?: (item: any) => void
   onDetail?: (item: any) => void
   onEdit?: (item: any) => void
